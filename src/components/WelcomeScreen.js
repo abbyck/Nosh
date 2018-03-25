@@ -38,12 +38,16 @@ class WelcomeScreen extends Component {
                 <View style={{flex:1, flexDirection:'column', paddingTop: 40}}>
                     <View style={{flexDirection:'row'}}>
                         <View style={{flex:0.1}}></View>
-                        
+                        <TouchableOpacity style={ styles.buttonStyleW }>
+                            <Text style={ styles.textStyleW }>SIGNUP</Text>
+                        </TouchableOpacity>
                         <View style={{flex:0.1}}></View>
                     </View>
                     <View style={{flexDirection:'row'}}>
                         <View style={{flex:0.1}}></View>
-                        
+                        <TouchableOpacity style={ styles.buttonStyleB }>
+                            <Text style={ styles.textStyleB }>LOGIN</Text>
+                        </TouchableOpacity>
                         <View style={{flex:0.1}}></View>
                     </View>
                 </View>    
@@ -79,7 +83,45 @@ const styles = {
         fontSize: 18,
         flex:0.8,
         fontFamily: 'Montserrat-Regular'
+    },
+    buttonStyleW: {
+        flex: 0.8,
+        backgroundColor: '#fff',
+        borderRadius: 7,
+        borderWidth: 1,
+        borderColor: '#fff',
+        marginLeft: 5,
+        marginRight: 5,
+    },
+    textStyleW: {
+        alignSelf: 'center',
+        color: '#3694dc',
+        fontSize: 18,
+        fontWeight: '600',
+        paddingTop: 10,
+        paddingBottom: 10,
+        fontFamily: 'Montserrat-Regular'
+    },
+    buttonStyleB: {
+        marginTop: 15,
+        flex: 0.8,
+        backgroundColor: '#0459ac',
+        borderRadius: 7,
+        borderWidth: 1,
+        borderColor: '#0459ac',
+        marginLeft: 5,
+        marginRight: 5,
+    },
+    textStyleB: {
+        alignSelf: 'center',
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: '600',
+        paddingTop: 10,
+        paddingBottom: 10,
+        fontFamily: 'Montserrat-Regular'
     }
+
   
   };
   
