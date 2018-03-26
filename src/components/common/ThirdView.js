@@ -1,15 +1,15 @@
 import React from 'react';
 import { Button, View, Text, Image } from 'react-native';
 
-class DetailsScreen extends React.Component {
+class ThirdView extends React.Component {
     render() {
       return (
         <View>
-            <Text>First</Text>
+            <Text>3rd</Text>
         </View>
       );
     }
 }
 
 
-export default DetailsScreen;
+export default ThirdView;

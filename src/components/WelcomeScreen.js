@@ -8,6 +8,10 @@ import {
 } from 'react-native';
 
 class WelcomeScreen extends Component {
+    static navigationOptions = {
+        header: null,
+    };
+
     render() {
         return(
             <View style={styles.container}>
@@ -38,14 +42,14 @@ class WelcomeScreen extends Component {
                 <View style={{flex:1, flexDirection:'column', paddingTop: 40}}>
                     <View style={{flexDirection:'row'}}>
                         <View style={{flex:0.1}}></View>
-                        <TouchableOpacity style={ styles.buttonStyleW }>
+                        <TouchableOpacity style={ styles.buttonStyleW } onPress={() => this.props.navigation.navigate('Signup')}>
                             <Text style={ styles.textStyleW }>SIGNUP</Text>
                         </TouchableOpacity>
                         <View style={{flex:0.1}}></View>
                     </View>
                     <View style={{flexDirection:'row'}}>
                         <View style={{flex:0.1}}></View>
-                        <TouchableOpacity style={ styles.buttonStyleB }>
+                        <TouchableOpacity style={ styles.buttonStyleB } onPress={() => this.props.navigation.navigate('Login')}>
                             <Text style={ styles.textStyleB }>LOGIN</Text>
                         </TouchableOpacity>
                         <View style={{flex:0.1}}></View>
@@ -73,7 +77,7 @@ const styles = {
     },
     heroText: {
         color: '#ffffff',
-        fontSize: 50,
+        fontSize: 39,
         flex:0.8,
         fontFamily: 'Montserrat-Bold'
     },
