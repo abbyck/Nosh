@@ -145,7 +145,7 @@ class Profile extends React.Component {
                         <View style={{flex:0.8}}>
                             <View style={styles.imageContainer}>
                                 <Image
-                                    source={require('../assets/images/profileme.jpg')}
+                                    source={require('../assets/images/profileme.png')}
                                 />
                             </View>
                         </View>

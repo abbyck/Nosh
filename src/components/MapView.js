@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, Text, Image, TouchableOpacity, ScrollView, WebView,Dimensions } from 'react-native';
+import { Button, View, Text, Image, TouchableOpacity, ScrollView, WebView,Dimensions, TouchableWithoutFeedback } from 'react-native';
 import PopupDialog, { SlideAnimation, DialogTitle } from 'react-native-popup-dialog';
 import CheckBox from 'react-native-checkbox';
 
@@ -39,7 +39,9 @@ class MapView extends React.Component {
                         source={require('../assets/images/ham.jpg')}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => console.log("Nosh clicked")}>
+                <TouchableOpacity onPress={() => {this.popupDialog2.show(
+                    this.setState({mapOn: false})
+                )}}>
                     <Image
                     style={styles.logo}
                     source={require('../assets/images/logoblack.jpg')}
@@ -121,14 +123,105 @@ class MapView extends React.Component {
                             </View>
                         </View>
                     </PopupDialog>
-                {/* MapView */}
-                    <ScrollView style={{flex: 1}}>
+                    {/* Pop 2 */}
+                    <PopupDialog
+                        ref={(popupDialog2) => { this.popupDialog2 = popupDialog2; }}
+                        dialogAnimation={slideAnimation}
+                        width={0.9}
+                        onDismissed={() => { this.setState({mapOn: true}) }}
+                        height={320}
+                    >
                         <View>
-                            <Image
-                                style={{height: 700, flex: 1, width: null}}
-                                source={require('../assets/images/map.jpg')}
-                            />
-                        </View>
+                            <View>
+                                <Text style={styles.popUpText}>Subway Pune</Text>
+                            </View>
+                            {/* Checkbox */}
+                            <View>
+                                <View style={{flexDirection:'row', justifyContent: 'space-around', marginTop: 15}}>
+                                    <View style={{flex:0.2}}></View>
+                                    <View style={{flex:0.6}}>
+                                        <Text style={{fontSize: 20, fontFamily: 'Montserrat-Regular', textAlign: 'center'}}>6 Hours</Text>
+                                    </View>
+                                    <View style={{flex:0.2}}></View>
+                                </View>
+                                <View style={{flexDirection:'row', justifyContent: 'space-around', marginTop: 15}}>
+                                    <View style={{flex:0.2}}></View>
+                                    <View style={{flex:0.6}}>
+                                    <Text style={{fontSize: 20, fontFamily: 'Montserrat-Regular', textAlign: 'center'}}>10 Bar-b-Que</Text>
+                                    </View>
+                                    <View style={{flex:0.2}}></View>
+                                </View>
+                            
+                                        
+                            </View>
+                            </View>
+                            <View>
+                                <View style={{flexDirection:'row', justifyContent: 'space-around', marginTop: 15}}>
+                                    <View style={{flex:0.2}}></View>
+                                    <View style={{flex:0.3}}>
+                                        <CheckBox
+                                            label='Dine-in'
+                                            checked={true}
+                                            checkedImage={require('../assets/images/checked.jpg')}
+                                            uncheckedImage={require('../assets/images/unchecked.jpg')}
+                                            onChange={(checked) => checked=false}
+                                        />
+                                    </View>
+                                    <View style={{flex:0.3}}>
+                                        <CheckBox
+                                            label='Take Away'
+                                            checked={false}
+                                            checkedImage={require('../assets/images/checked.jpg')}
+                                            uncheckedImage={require('../assets/images/unchecked.jpg')}
+                                            onChange={(checked) => this.checked=true}
+                                        />
+                                    </View>
+                                    <View style={{flex:0.2}}></View>
+                                </View>
+                            </View>
+
+
+                            <View>
+                                <View style={{flexDirection:'row', justifyContent: 'space-around', marginTop: 15}}>
+                                    <View style={{flex:0.2}}></View>
+                                    <View style={{flex:0.3}}>
+                                        <CheckBox
+                                            label='N/V'
+                                            checked={true}
+                                            checkedImage={require('../assets/images/checked.jpg')}
+                                            uncheckedImage={require('../assets/images/unchecked.jpg')}
+                                            onChange={(checked) => checked=false}
+                                        />
+                                    </View>
+                                    <View style={{flex:0.3}}>
+                                        <CheckBox
+                                            label='V'
+                                            checked={false}
+                                            checkedImage={require('../assets/images/checked.jpg')}
+                                            uncheckedImage={require('../assets/images/unchecked.jpg')}
+                                            onChange={(checked) => this.checked=true}
+                                        />
+                                    </View>
+                                    <View style={{flex:0.2}}></View>
+                                </View>
+                            </View>
+                            <View style={{flexDirection:'row', marginTop: 15}}>
+                                    <View style={{flex:0.3}}></View>
+                                        <TouchableOpacity style={ styles.buttonStyleB } onPress={() => {this.popupDialog2.dismiss(this.setState({mapOn: true}))}}>
+                                            <Text style={ styles.textStyleB }>REQUEST</Text>
+                                        </TouchableOpacity>
+                                    <View style={{flex:0.3}}></View>
+                                </View>
+
+                            </PopupDialog>
+                
+                    <ScrollView contentContainerStyle={{height: 700}}>
+                        <ScrollView horizontal contentContainerStyle={{width: 2000}}>
+                                <Image
+                                    style={{height: 700,flex: 1, width: null}}
+                                    source={require('../assets/images/map.png')}
+                                />
+                        </ScrollView>
                     </ScrollView>
                 {/* End map view */}
                 
@@ -154,7 +247,7 @@ const styles = {
         bottom: 100, 
         // justifyContent: 'center', 
         // alignItems: 'center'
-        left: (Dimensions.get('window').width / 2) - 183
+        left: (Dimensions.get('window').width / 2) - (((Dimensions.get('window').width*8.5)/10.0)/2)-8
     },
     header: {
         flexDirection: 'row',
