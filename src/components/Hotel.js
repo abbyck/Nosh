@@ -17,7 +17,7 @@ class Hotel extends React.Component {
         <View style={styles.container}>
             {/* Header */}
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Signup')}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Profile')}>
                     <Image
                         style={styles.ham}
                         source={require('../assets/images/ham.jpg')}
@@ -29,7 +29,7 @@ class Hotel extends React.Component {
                     source={require('../assets/images/logoblack.jpg')}
                 />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => {this.popupDialog.show()}}>
+                <TouchableOpacity onPress={() => console.log('Clicked filter')}>
                     <Image
                         style={styles.profile}
                         source={require('../assets/images/profile.jpg')}
@@ -44,7 +44,7 @@ class Hotel extends React.Component {
                         <View style={{flex:0.1}}>
                             <TouchableOpacity onPress={() => this.props.navigation.navigate('MapView')}>
                                 <Image
-                                    style={{marginTop: 10,height: 20}}
+                                    style={{marginTop: 20,height: 36, width: 40}}
                                     source={require('../assets/images/cross.jpg')}
                                 />
                             </TouchableOpacity>
@@ -64,7 +64,7 @@ class Hotel extends React.Component {
                     <View style={{flexDirection:'row'}}>
                         <View style={{flex:0.1}}></View>
                         <View style={{flex:0.8}}>
-                            <Text style={{fontFamily: 'Montserrat-Bold', fontSize: 39, color: '#21242c', textAlign: 'center'}}>Marriott Hotels</Text>
+                            <Text style={{fontFamily: 'Montserrat-Bold', fontSize: 30, color: '#21242c', textAlign: 'center'}}>Marriott Hotels</Text>
                         </View>
                         <View style={{flex:0.1}}></View>
                     </View>
@@ -75,16 +75,16 @@ class Hotel extends React.Component {
                         </View>
                         <View style={{flex:0.1}}></View>
                     </View>
-                    <View style={{flexDirection:'row'}}>
+                    <View style={{flexDirection:'row', marginTop: 40}}>
                         <View style={{flex:0.15}}></View>
-                        <View style={{flex:0.2}}>
+                        <View style={{flex:0.1}}>
                             <Image
                                 style={styles.time}
                                 source={require('../assets/images/clock.jpg')}
                             />
                         </View>
                         <View style={{flex:0.05}}></View>
-                        <View style={{flex:0.5}}>
+                        <View style={{flex:0.6}}>
                             <TextInput
                                 placeholder={'Time'}
                                 autoCorrect={false}
@@ -94,16 +94,16 @@ class Hotel extends React.Component {
                         </View>
                         <View style={{flex:0.1}}></View>
                     </View>
-                    <View style={{flexDirection:'row', paddingTop: 10}}>
+                    <View style={{flexDirection:'row', marginTop: 20}}>
                         <View style={{flex:0.15}}></View>
-                        <View style={{flex:0.2}}>
+                        <View style={{flex:0.1}}>
                             <Image
                                 style={styles.time}
                                 source={require('../assets/images/fork.jpg')}
                             />
                         </View>
                         <View style={{flex:0.05}}></View>
-                        <View style={{flex:0.5}}>
+                        <View style={{flex:0.6}}>
                             <TextInput
                                 placeholder={'Food Items'}
                                 autoCorrect={false}
@@ -113,7 +113,7 @@ class Hotel extends React.Component {
                         </View>
                         <View style={{flex:0.1}}></View>
                     </View>
-                    <View style={{flexDirection:'row'}}>
+                    <View style={{flexDirection:'row', marginTop: 20}}>
                         <View style={{flex:0.2}}></View>
                         <View style={{flex:0.25}}>
                             <CheckBox
@@ -160,16 +160,17 @@ class Hotel extends React.Component {
                         <View style={{flex:0.1}}></View>
                     </View>
                     <View style={{flexDirection:'row'}}>
-                        <View style={{flex:0.2}}></View>
+                        <View style={{flex:0.1}}></View>
                         <View style={{flex:0.8, height: 80}}>
                             <TouchableOpacity style={ styles.buttonStyleB } onPress={() => this.props.navigation.navigate('Final')}>
                                 <Text style={ styles.textStyleB }>TOST</Text>
                             </TouchableOpacity>
                         </View>
-                        <View style={{flex:0.2}}></View>
+                        <View style={{flex:0.1}}></View>
                     </View>
                 </View>    
                 </View>
+                <View style={{height: 30}}></View>
             </ScrollView>
         
         
@@ -192,7 +193,7 @@ const styles = {
     },
     ham: {
         height: 60,
-        width: 35
+        width: 60
     },
     logo: {
         height: 60,
@@ -230,8 +231,9 @@ const styles = {
         paddingLeft: 5,
         fontSize: 18,
         lineHeight: 23,
-        backgroundColor: '#d2d6d7',
-        borderRadius: 7
+        backgroundColor: '#ebebeb',
+        borderRadius: 7,
+        height: 30
     },
     time: {
         height: 45,
@@ -240,10 +242,10 @@ const styles = {
     buttonStyleB: {
         marginTop: 15,
         flex: 0.8,
-        backgroundColor: '#0459ac',
+        backgroundColor: '#53a8e9',
         borderRadius: 7,
         borderWidth: 1,
-        borderColor: '#0459ac',
+        borderColor: '#53a8e9',
         marginLeft: 5,
         marginRight: 5,
         elevation: 7
@@ -251,11 +253,11 @@ const styles = {
     textStyleB: {
         alignSelf: 'center',
         color: '#fff',
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: '600',
         paddingTop: 10,
         paddingBottom: 10,
-        fontFamily: 'Montserrat-Regular'
+        fontFamily: 'Montserrat-Bold'
     }
 }
 

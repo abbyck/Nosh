@@ -22,15 +22,15 @@ class SignUpScreen extends React.Component{
                     </View>
                     <View style={{flexDirection:'row'}}>
                         <View style={{flex:0.1}}></View>
-                        <Text style={styles.heroCaption}>Please enter details to the below fields.</Text>
+                        <Text style={styles.heroCaption}>Enter your details.</Text>
                         <View style={{flex:0.1}}></View>
                     </View>
 
                     {/* Input */}
-                    <View style={{flexDirection:'row', marginTop: 20}}>
+                    <View style={{flexDirection:'row', marginTop: 25}}>
                         <View style={{flex:0.1}}></View>
                         <TextInput
-                            placeholder={'Enter desired Username'}
+                            placeholder={'Username'}
                             autoCorrect={false}
                             style={styles.inputStyleUser}
                             underlineColorAndroid='transparent'
@@ -40,7 +40,7 @@ class SignUpScreen extends React.Component{
                     <View style={{flexDirection:'row', marginTop: 15}}>
                         <View style={{flex:0.1}}></View>
                         <TextInput
-                            placeholder={'Enter Password'}
+                            placeholder={'Password'}
                             autoCorrect={false}
                             style={styles.inputStylePass}
                             secureTextEntry={ true } 
@@ -50,7 +50,7 @@ class SignUpScreen extends React.Component{
                         {/* Input */}
                     </View>
                     {/* Button */}
-                    <View style={{flex:1, flexDirection:'column', paddingTop: 20}}>
+                    <View style={{flex:1, flexDirection:'column', marginTop: 15}}>
                         <View style={{flexDirection:'row'}}>
                             <View style={{flex:0.1}}></View>
                             <TouchableOpacity style={ styles.buttonStyleB } onPress={() => this.props.navigation.navigate('MapView')}>
@@ -85,7 +85,6 @@ const styles = {
         fontFamily: 'Montserrat-Bold'
     },
     heroCaption: {
-        paddingTop: 15,
         color: '#21242b',
         fontSize: 18,
         flex:0.8,
@@ -112,8 +111,8 @@ const styles = {
         borderRadius: 7
     },
     buttonStyleB: {
-        marginTop: 15,
-        flex: 0.8,
+        // marginTop: 5,
+        flex: 0.9,
         backgroundColor: '#2f8eec',
         borderRadius: 7,
         borderWidth: 1,

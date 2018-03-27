@@ -18,7 +18,7 @@ class WelcomeScreen extends Component {
                 {/* Logo */}
                 <View style={styles.logoContainer}>
                     <Image
-                        source={require('../assets/images/logoblue.jpg')}
+                        source={require('../assets/images/lgbl.png')}
                     />
                 </View>
                 {/* End logo */}

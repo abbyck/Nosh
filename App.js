@@ -13,7 +13,8 @@ import SignUpScreen from './src/components/SignUpScreen';
 import MapView from './src/components/MapView';
 import Hotel from './src/components/Hotel';
 import Final from './src/components/Final';
-
+import Profile from './src/components/Profile';
+import Accept from './src/components/Accept';
 
 // import FirstView from './src/components/FirstView';
 // import SecondView from './src/components/SecondView';
@@ -41,6 +42,12 @@ const RootStack = StackNavigator(
     },
     Final: {
       screen: Final
+    },
+    Profile: {
+      screen: Profile
+    },
+    Accept: {
+      screen: Accept
     }
   },
   {

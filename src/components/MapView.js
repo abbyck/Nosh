@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, Text, Image, TouchableOpacity, ScrollView, WebView } from 'react-native';
+import { Button, View, Text, Image, TouchableOpacity, ScrollView, WebView,Dimensions } from 'react-native';
 import PopupDialog, { SlideAnimation, DialogTitle } from 'react-native-popup-dialog';
 import CheckBox from 'react-native-checkbox';
 
@@ -8,10 +8,24 @@ const slideAnimation = new SlideAnimation({
 });
 
 class MapView extends React.Component {
+    state ={ mapOn: true }
 
     static navigationOptions = {
         header: null
        };
+    
+    renderButton(){
+        if(this.state.mapOn){
+            return(
+                <TouchableOpacity style={ styles.buttonStyleBottom } onPress={() => this.props.navigation.navigate('Hotel')}>
+                    <Text style={ styles.textStyleB }>TOST</Text>
+                </TouchableOpacity>
+            )
+        }
+        else{
+            return <View/>
+        }
+    }
 
     render() {
       return (
@@ -19,7 +33,7 @@ class MapView extends React.Component {
         <View>
             {/* Header */}
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Signup')}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Profile')}>
                     <Image
                         style={styles.ham}
                         source={require('../assets/images/ham.jpg')}
@@ -31,7 +45,9 @@ class MapView extends React.Component {
                     source={require('../assets/images/logoblack.jpg')}
                 />
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => {this.popupDialog.show()}}>
+                <TouchableOpacity onPress={() => {this.popupDialog.show(
+                    this.setState({mapOn: false})
+                )}}>
                     <Image
                         style={styles.profile}
                         source={require('../assets/images/profile.jpg')}
@@ -48,6 +64,7 @@ class MapView extends React.Component {
                         ref={(popupDialog) => { this.popupDialog = popupDialog; }}
                         dialogAnimation={slideAnimation}
                         width={0.9}
+                        onDismissed={() => { this.setState({mapOn: true}) }}
                     >
                         <View>
                             <View>
@@ -63,7 +80,7 @@ class MapView extends React.Component {
                                             checked={true}
                                             checkedImage={require('../assets/images/checked.jpg')}
                                             uncheckedImage={require('../assets/images/unchecked.jpg')}
-                                            onChange={(checked) => this.checked=true}
+                                            onChange={(checked) => checked=false}
                                         />
                                     </View>
                                     <View style={{flex:0.2}}></View>
@@ -96,7 +113,7 @@ class MapView extends React.Component {
                                 </View>
                                 <View style={{flexDirection:'row', marginTop: 20}}>
                                     <View style={{flex:0.3}}></View>
-                                        <TouchableOpacity style={ styles.buttonStyleB } onPress={() => {this.popupDialog.dismiss()}}>
+                                        <TouchableOpacity style={ styles.buttonStyleB } onPress={() => {this.popupDialog.dismiss(this.setState({mapOn: true}))}}>
                                             <Text style={ styles.textStyleB }>Submit</Text>
                                         </TouchableOpacity>
                                     <View style={{flex:0.3}}></View>
@@ -104,26 +121,24 @@ class MapView extends React.Component {
                             </View>
                         </View>
                     </PopupDialog>
-                <View style={{flexDirection: 'row'}}>
-                    <View style={{flex: 0.8}}>
-                    {/* <Image
-                        source={require('../assets/images/map.jpg')}
-                        //style={{flex: 1}}
-                         style={{ width: 500, height: 520, flex: 1}}
-                    /> */}
-                    <WebView
-    source={{uri: 'https://www.google.co.in/maps/place/Kochi,+Kerala/@10.0368434,76.313226,16.21z/data=!4m5!3m4!1s0x3b080d514abec6bf:0xbd582caa5844192!8m2!3d9.9312328!4d76.2673041?hl=en'}}
-    style={{height : 400, width : null, flex: 1}}
-  />
-                    </View>
-                </View>
-                <View>
-                    <TouchableOpacity style={ styles.buttonStyleBottom } onPress={() => this.props.navigation.navigate('Hotel')}>
-                        <Text style={ styles.textStyleB }>TOST</Text>
-                    </TouchableOpacity>
-                </View> 
+                {/* MapView */}
+                    <ScrollView style={{flex: 1}}>
+                        <View>
+                            <Image
+                                style={{height: 700, flex: 1, width: null}}
+                                source={require('../assets/images/map.jpg')}
+                            />
+                        </View>
+                    </ScrollView>
+                {/* End map view */}
+                
             </View>
             </ScrollView>
+            
+            {/* <View style={{position: 'absolute', bottom: 100,}}> */}
+            <View style={styles.buttonContainer}>
+                { this.renderButton() }
+            </View> 
             {/* Map */}
         </View>
       );
@@ -131,16 +146,27 @@ class MapView extends React.Component {
 }
 
 const styles = {
+    buttonContainer: {
+        position: 'absolute', 
+        // top: 0, 
+        // left: 0, 
+        // right: 0, 
+        bottom: 100, 
+        // justifyContent: 'center', 
+        // alignItems: 'center'
+        left: (Dimensions.get('window').width / 2) - 183
+    },
     header: {
         flexDirection: 'row',
         height: 60,
         backgroundColor: '#fff',
         justifyContent: 'space-around',
-        elevation: 5
+        elevation: 10
     },
     ham: {
+        marginLeft: 0,
         height: 60,
-        width: 35
+        width: 60
     },
     logo: {
         height: 60,
@@ -152,17 +178,23 @@ const styles = {
     },
     buttonStyleBottom: {
         marginTop: 15,
-        backgroundColor: '#2f8eec',
+        backgroundColor: '#53a8e9',
         borderRadius: 7,
         borderWidth: 1,
-        borderColor: '#2f8eec',
-        marginLeft: 40,
-        marginRight: 40,
+        borderColor: '#53a8e9',
+        marginLeft: 10,
+        marginRight: 10,
+        paddingRight: 40,
+        paddingLeft: 40,
+        width: ((Dimensions.get('window').width*8.5)/10.0),
+        elevation: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     textStyleB: {
         alignSelf: 'center',
         color: '#fff',
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: '600',
         paddingTop: 10,
         paddingBottom: 10,

@@ -20,7 +20,7 @@ class Final extends React.Component {
                 <View>
                     <View style={{flex:0.1}}></View>
                     <View style={{flex:0.8}}>
-                        <Text style={styles.textStyle}>Tost has been made successfully</Text>
+                        <Text style={styles.textStyle}>Request has been accepted</Text>
                     </View>
                     <View style={{flex:0.1}}></View>
                 </View>
@@ -37,8 +37,6 @@ var styles= {
         alignItems: 'center'
     },
     textStyle: {
-        paddingLeft: 20,
-        paddingRight: 20,
         textAlign: 'center',
         fontSize: 25,
         fontFamily: 'Montserrat-Regular',
